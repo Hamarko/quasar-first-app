@@ -1,50 +1,22 @@
 import { defineStore } from 'pinia'
 
-export const useCounterStore = defineStore('counter', {
+export const useChatStore = defineStore('example-store', {
   state: () => ({
     counter: 0,
-    linksList : [
+    listMessage: [
       {
-        title: 'Docs',
-        caption: 'quasar.dev',
-        icon: 'school',
-        link: 'https://quasar.dev'
+        name: 'me',
+        avatar: 'https://cdn.quasar.dev/img/avatar1.jpg',
+        text: ['hey, how are you?', 'hey, how are you?'],
+        sent: true,
+        id: 1
       },
       {
-        title: 'Github',
-        caption: 'github.com/quasarframework',
-        icon: 'code',
-        link: 'https://github.com/quasarframework'
-      },
-      {
-        title: 'Discord Chat Channel',
-        caption: 'chat.quasar.dev',
-        icon: 'chat',
-        link: 'https://chat.quasar.dev'
-      },
-      {
-        title: 'Forum',
-        caption: 'forum.quasar.dev',
-        icon: 'record_voice_over',
-        link: 'https://forum.quasar.dev'
-      },
-      {
-        title: 'Twitter',
-        caption: '@quasarframework',
-        icon: 'rss_feed',
-        link: 'https://twitter.quasar.dev'
-      },
-      {
-        title: 'Facebook',
-        caption: '@QuasarFramework',
-        icon: 'public',
-        link: 'https://facebook.quasar.dev'
-      },
-      {
-        title: 'Quasar Awesome',
-        caption: 'Community Quasar projects',
-        icon: 'favorite',
-        link: 'https://awesome.quasar.dev'
+        name: 'Jane',
+        avatar: 'https://cdn.quasar.dev/img/avatar2.jpg',
+        text: ['doing fine, how r you?'],
+        sent: false,
+        id: 2
       }
     ]
   }),
@@ -52,8 +24,16 @@ export const useCounterStore = defineStore('counter', {
     doubleCount: (state) => state.counter * 2
   },
   actions: {
-    increment () {
-      this.counter++
+    addMessag (message) {
+      if (this.listMessage[this.listMessage.length - 1].name !== 'me') {
+        this.listMessage.push({
+          name: 'me',
+          avatar: 'https://cdn.quasar.dev/img/avatar1.jpg',
+          text: [],
+          sent: true
+        })
+      }
+      this.listMessage[this.listMessage.length - 1].text.push(message)
     }
   }
 })

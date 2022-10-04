@@ -1,10 +1,10 @@
 <template>
   <q-page class="all-Wrapper">
     <div class="all-Content-Border">
-      <h1>Main drawer</h1>
+      <p>Main drawer</p>
     </div>
     <div class="all-Content-Main">
-      <h1>Clubs</h1>
+      <p>Clubs</p>
     </div>
   </q-page>
 </template>
@@ -20,7 +20,7 @@ export default defineComponent({
 <style lang="scss">
   .all-Wrapper{
     display: grid;
-    grid-template-columns: 352px 1fr;
+    grid-template-columns: 1fr 3fr;
   }
   .all-Content-Border{
     display: flex;
